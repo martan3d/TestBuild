@@ -1,6 +1,5 @@
 import base64
 import pprint
-from github import Github
 import os
 
 GIT_TOKEN = "8e3a35b91b03c77cfbd2e5d787a28c4998560861"
@@ -39,14 +38,3 @@ for glist in gamelist:
     subdir = os.path.join(slotsname, glist)
     createDirectoryStructure(subdir)
 
-# fetch some gits
-git = Github(GIT_TOKEN)
-repo = git.get_repo('martan3d/rpiwebapp')
-file_content = repo.get_contents('main.py')
-file_data = base64.b64decode(file_content.content)
-
-destination = os.path.join(slotsname, gamelist[0], 'main.py')
-
-f = open(destination,"w")
-f.write(str(file_data))
-f.close()
