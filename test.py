@@ -1,3 +1,4 @@
+import sys
 import base64
 import pprint
 import os
@@ -10,8 +11,14 @@ def createDirectoryStructure(mypath):
 
 ## MAIN ##
 
+if not sys.argv[1]:
+   print ("Missing Directory Command Line Parameter")
+   sys.exit(0)
+
+base = sys.argv[1]
+
 # base directory
-basename = "GAMEPARTITION"
+basename = os.path.join(base,"GAMEPARTITION")
 
 # get our current directory
 currentdir = os.getcwd()
